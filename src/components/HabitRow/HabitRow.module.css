@@ -11,3 +11,10 @@
 .checkbox:hover {
   border: 1px solid #111111;
 }
+
+.actionButtons {
+  display: flex;
+  align-items: center;
+  border-right: 1px solid #ddd;
+  gap: 5px;
+}

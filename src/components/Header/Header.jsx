@@ -2,10 +2,10 @@
 import styles from "./Header.module.css";
 function Header() {
   const boxesArray = Array.from({ length: 31 });
-
   return (
     <div>
       <div className="row">
+        <div className="actions"></div>
         <div className="title">Habit</div>
         <div className="datesContainer">
           {boxesArray.map((_, index) => (

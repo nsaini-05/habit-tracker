@@ -13,13 +13,16 @@ body {
   font-size: 1.6rem;
   color: #111111;
 }
-
-.main-container {
+.centered-container {
   max-width: 110rem;
-  border-top: 1px solid #dddddd;
   margin: 13rem auto;
+  text-align: center;
 }
 
-.habitsContainer .row:nth-child(odd) {
+main {
+  border-top: 1px solid #dddddd;
+}
+
+.habitsContainer .row:nth-child(even) {
   background-color: #f6f6f6;
 }

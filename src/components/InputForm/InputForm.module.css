@@ -1,0 +1,33 @@
+.inputContainer {
+  margin-bottom: 1.8rem;
+  display: flex;
+  gap: 1rem;
+  justify-content: center;
+  align-items: center;
+}
+
+.textInput {
+  padding: 1rem;
+  font-size: 1.6rem;
+  font-family: inherit;
+  border-radius: 5px;
+  color: inherit;
+  outline: none;
+  border: 1px solid #ddd;
+}
+
+.primary {
+  font-size: 1.6rem;
+  padding: 1.2rem;
+  border-radius: 5px;
+  text-decoration: none;
+  transition: all 0.5s;
+  border: none;
+  cursor: pointer;
+  color: #111;
+  font-family: inherit;
+  font-weight: 500;
+  display: flex;
+  align-items: center;
+  gap: 5px;
+}

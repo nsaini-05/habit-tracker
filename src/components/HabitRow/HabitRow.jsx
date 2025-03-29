@@ -1,9 +1,14 @@
 import styles from "./HabitRow.module.css";
 import { IoMdCheckmark } from "react-icons/io";
+import { MdDeleteOutline } from "react-icons/md";
+import { MdOutlineEdit } from "react-icons/md";
+import { useContext } from "react";
+import { HabitsContext } from "../../contexts/HabitsContext";
 
 const boxesArray = Array.from({ length: 31 });
 
-function HabitRow({ habitData, setHabits }) {
+function HabitRow({ habitData }) {
+  const { setUpdateHabit, setHabits } = useContext(HabitsContext);
   const hanldeOnClick = (id, index) => {
     const newDate = index + 1;
     setHabits((habits) => {
@@ -21,7 +26,14 @@ function HabitRow({ habitData, setHabits }) {
   };
   return (
     <div className="row">
-      <div className="title">{habitData.name}</div>
+      <div className={styles.actionButtons}>
+        <MdDeleteOutline size="1.6rem" />{" "}
+        <MdOutlineEdit
+          size="1.6rem"
+          onClick={() => setUpdateHabit(habitData)}
+        />
+      </div>
+      <div className={`title`}>{habitData.name} </div>
       <div className="datesContainer">
         {boxesArray.map((_, index) => (
           <div
@@ -34,10 +46,9 @@ function HabitRow({ habitData, setHabits }) {
           </div>
         ))}
       </div>
-      {/* {habitData.dates.length > 0 && (
+      {habitData.dates.length > 0 && (
         <div className="total">{habitData.dates.length}</div>
-      )} */}
-      <div className="total">{habitData.dates.length}</div>
+      )}
     </div>
   );
 }
