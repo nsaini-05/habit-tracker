@@ -1,13 +1,18 @@
-import { createContext, useState } from "react";
+import { createContext, useState, useEffect } from "react";
+import { useLocalStorage } from "../hooks/useLocalStorageHook";
 const HabitsContext = createContext();
 
 const HabitsProvider = ({ children }) => {
+  const { getLocalStorage } = useLocalStorage();
   const [habits, setHabits] = useState(() => {
-    const localData = localStorage.getItem("habits");
-    const sampleInput = [{ id: 100, name: "cycling", dates: [] }];
-    return localData ? JSON.parse(localData) : sampleInput;
+    return getLocalStorage("habits") || [];
   });
   const [updateHabit, setUpdateHabit] = useState(null);
+
+  useEffect(() => {
+    localStorage.setItem("habits", JSON.stringify(habits));
+  }, [habits]);
+
   return (
     <HabitsContext.Provider
       value={{ habits, setHabits, updateHabit, setUpdateHabit }}

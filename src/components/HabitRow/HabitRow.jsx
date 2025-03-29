@@ -26,10 +26,17 @@ function HabitRow({ habitData }) {
     });
   };
 
+  const hanldeDelete = (id) => {
+    setHabits((habits) => habits.filter((habit) => habit.id !== id));
+  };
+
   return (
     <div className="row">
       <div className={styles.actionButtons}>
-        <button className={`primary ${styles.actionButton}`}>
+        <button
+          className={`primary ${styles.actionButton}`}
+          onClick={() => hanldeDelete(habitData.id)}
+        >
           <MdDeleteOutline size="1.6rem" />
         </button>
         <button className={`primary ${styles.actionButton}`}>

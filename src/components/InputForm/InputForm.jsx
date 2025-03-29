@@ -4,12 +4,13 @@ import { IoMdAddCircleOutline } from "react-icons/io";
 import { HabitsContext } from "../../contexts/HabitsContext";
 import { VscDiscard } from "react-icons/vsc";
 import { FaSave } from "react-icons/fa";
-
+import { useLocalStorage } from "../../hooks/useLocalStorageHook";
 function InputForm() {
   // eslint-disable-next-line no-unused-vars
   const { habits, setHabits, updateHabit, setUpdateHabit } =
     useContext(HabitsContext);
   const [inputText, setInputText] = useState("");
+  const { setLocalStorage } = useLocalStorage();
 
   useEffect(() => {
     setInputText(updateHabit ? updateHabit.name : "");
@@ -21,6 +22,7 @@ function InputForm() {
       { name: inputText, id: habits.length + 1, dates: [] },
     ]);
     setInputText("");
+    setLocalStorage("habits", habits);
   };
 
   const handleUpdate = () => {
@@ -34,6 +36,7 @@ function InputForm() {
 
   const hanldeDiscard = () => {
     setUpdateHabit(null);
+    setInputText("");
   };
   return (
     <div className={styles.inputContainer}>
@@ -54,7 +57,7 @@ function InputForm() {
           onClick={onSubmit}
         >
           <IoMdAddCircleOutline />
-          Add Habit
+          Add
         </button>
       )}
       {updateHabit && (
@@ -68,17 +71,17 @@ function InputForm() {
             <FaSave />
             Save
           </button>
-          <button
-            type="submit"
-            disabled={inputText === ""}
-            onClick={hanldeDiscard}
-            className="primary"
-          >
-            <VscDiscard />
-            Discard
-          </button>
         </div>
       )}
+      <button
+        type="submit"
+        disabled={inputText === ""}
+        onClick={hanldeDiscard}
+        className="primary"
+      >
+        <VscDiscard />
+        Discard
+      </button>
     </div>
   );
 }
