@@ -4,10 +4,12 @@ function App() {
   return (
     <div className="main-container">
       <Header />
-      <HabitRow />
-      <HabitRow />
-      <HabitRow />
-      <HabitRow />
+      <div className="habitsContainer">
+        <HabitRow />
+        <HabitRow />
+        <HabitRow />
+        <HabitRow />
+      </div>
     </div>
   );
 }
