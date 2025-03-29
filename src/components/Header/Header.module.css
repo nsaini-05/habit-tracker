@@ -12,7 +12,7 @@
   letter-spacing: 2px;
   font-size: 1.2rem;
   font-weight: 600;
-  border-right: 1px solid #dddddd;
+  border-right: 1px solid #f1e9e9;
   display: flex;
   align-items: center;
 }
@@ -28,7 +28,7 @@
   font-size: 1.1rem;
 }
 
-.total {
+:global(.total) {
   font-size: 1rem;
   text-transform: uppercase;
   letter-spacing: 2px;

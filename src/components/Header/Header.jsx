@@ -1,3 +1,4 @@
+// eslint-disable-next-line no-unused-vars
 import styles from "./Header.module.css";
 function Header() {
   const boxesArray = Array.from({ length: 31 });
@@ -13,7 +14,7 @@ function Header() {
             </div>
           ))}
         </div>
-        <div className={styles.total}>Total</div>
+        <div className="total">Total</div>
       </div>
     </div>
   );
