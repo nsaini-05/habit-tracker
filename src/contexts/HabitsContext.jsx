@@ -7,7 +7,7 @@ const HabitsProvider = ({ children }) => {
     const sampleInput = [{ id: 100, name: "cycling", dates: [] }];
     return localData ? JSON.parse(localData) : sampleInput;
   });
-  const [updateHabit, setUpdateHabit] = useState({});
+  const [updateHabit, setUpdateHabit] = useState(null);
   return (
     <HabitsContext.Provider
       value={{ habits, setHabits, updateHabit, setUpdateHabit }}

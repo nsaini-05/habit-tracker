@@ -17,4 +17,18 @@
   align-items: center;
   border-right: 1px solid #ddd;
   gap: 5px;
+  padding: 0 0.6rem;
+}
+
+.actionButton {
+  padding: 0.1rem !important;
+  font-size: 1rem;
+  background-color: inherit !important;
+}
+/* .action-icon {
+  padding: 0.1rem;
+} */
+
+.action-icon :hover {
+  box-shadow: inset 0 0 0 1px #111;
 }

@@ -15,6 +15,9 @@
   border-right: 1px solid #f1e9e9;
   display: flex;
   align-items: center;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
 }
 :global(.datesContainer) {
   display: grid;

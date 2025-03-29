@@ -9,6 +9,7 @@ const boxesArray = Array.from({ length: 31 });
 
 function HabitRow({ habitData }) {
   const { setUpdateHabit, setHabits } = useContext(HabitsContext);
+
   const hanldeOnClick = (id, index) => {
     const newDate = index + 1;
     setHabits((habits) => {
@@ -24,14 +25,20 @@ function HabitRow({ habitData }) {
       );
     });
   };
+
   return (
     <div className="row">
       <div className={styles.actionButtons}>
-        <MdDeleteOutline size="1.6rem" />{" "}
-        <MdOutlineEdit
-          size="1.6rem"
-          onClick={() => setUpdateHabit(habitData)}
-        />
+        <button className={`primary ${styles.actionButton}`}>
+          <MdDeleteOutline size="1.6rem" />
+        </button>
+        <button className={`primary ${styles.actionButton}`}>
+          <MdOutlineEdit
+            size="1.6rem"
+            onClick={() => setUpdateHabit(habitData)}
+            className="action-icon"
+          />
+        </button>
       </div>
       <div className={`title`}>{habitData.name} </div>
       <div className="datesContainer">
