@@ -1,0 +1,38 @@
+:global(.row) {
+  display: grid;
+  grid-template-columns: 20.6rem 1fr 7.9rem;
+  border-bottom: 1px solid #dddddd;
+}
+
+:global(.title) {
+  padding-left: 1.6rem;
+  padding-top: 1rem;
+  padding-bottom: 1.1rem;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  font-size: 1.2rem;
+  font-weight: 600;
+  border-right: 1px solid #dddddd;
+  display: flex;
+  align-items: center;
+}
+:global(.datesContainer) {
+  display: grid;
+  align-items: center;
+  justify-items: center;
+  grid-template-columns: repeat(31, 1fr);
+}
+
+:global(.box) {
+  color: #777777;
+  font-size: 1.1rem;
+}
+
+.total {
+  font-size: 1rem;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  display: flex;
+  align-items: center;
+  padding-left: 2.3rem;
+}
