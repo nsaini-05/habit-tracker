@@ -30,50 +30,52 @@ function InputForm() {
   };
 
   return (
-    <div className={styles.inputContainer}>
-      <input
-        type="text"
-        className={styles.textInput}
-        value={inputText}
-        onChange={(e) => {
-          setInputText(e.target.value);
-        }}
-        placeholder="Enter New Habit"
-      ></input>
-      {!recordToEdit && (
-        <button
-          type="submit"
-          className="primary"
-          disabled={inputText === ""}
-          onClick={handleAdd}
-        >
-          <IoMdAddCircleOutline />
-          Add
-        </button>
-      )}
-      {recordToEdit && (
-        <div className={styles.buttonsContainer}>
+    <>
+      <div className={styles.inputContainer}>
+        <input
+          type="text"
+          className={styles.textInput}
+          value={inputText}
+          onChange={(e) => {
+            setInputText(e.target.value);
+          }}
+          placeholder="Enter New Habit"
+        ></input>
+        {!recordToEdit && (
           <button
             type="submit"
             className="primary"
-            disabled={inputText === recordToEdit.name}
-            onClick={handleUpdate}
+            disabled={inputText === ""}
+            onClick={handleAdd}
           >
-            <FaSave />
-            Save
+            <IoMdAddCircleOutline />
+            Add
           </button>
-        </div>
-      )}
-      <button
-        type="submit"
-        disabled={inputText === ""}
-        onClick={hanldeDiscard}
-        className="primary"
-      >
-        <VscDiscard />
-        Discard
-      </button>
-    </div>
+        )}
+        {recordToEdit && (
+          <div className={styles.buttonsContainer}>
+            <button
+              type="submit"
+              className="primary"
+              disabled={inputText === recordToEdit.name}
+              onClick={handleUpdate}
+            >
+              <FaSave />
+              Save
+            </button>
+          </div>
+        )}
+        <button
+          type="submit"
+          disabled={inputText === ""}
+          onClick={hanldeDiscard}
+          className="primary"
+        >
+          <VscDiscard />
+          Discard
+        </button>
+      </div>
+    </>
   );
 }
 
