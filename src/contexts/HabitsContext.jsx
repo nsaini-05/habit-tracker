@@ -88,9 +88,12 @@ const HabitsProvider = ({ children }) => {
   };
 
   useEffect(() => {
-    getQuote();
     localStorage.setItem("habits", JSON.stringify(habits));
   }, [habits]);
+
+  useEffect(() => {
+    getQuote();
+  }, []);
 
   return (
     <HabitsContext.Provider
