@@ -23,7 +23,10 @@ function HabitRow({ habitData }) {
   };
 
   const hanldeDelete = (id) => {
-    deleteHabit(id);
+    const confirm = window.confirm(
+      "Are you sure you want to delete the record ?"
+    );
+    if (confirm) deleteHabit(id);
   };
 
   return (

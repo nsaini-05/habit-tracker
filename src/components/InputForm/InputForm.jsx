@@ -1,4 +1,4 @@
-import { useContext, useEffect, useState } from "react";
+import { useContext, useEffect, useRef, useState } from "react";
 import { IoMdAddCircleOutline } from "react-icons/io";
 import { HabitsContext } from "../../contexts/HabitsContext";
 import { VscDiscard } from "react-icons/vsc";
@@ -13,15 +13,18 @@ function InputForm() {
     updateHabit,
     quote,
     author,
+    habits,
   } = useContext(HabitsContext);
 
   const [inputText, setInputText] = useState("");
+  const inputRef = useRef();
 
   useEffect(() => {
     setInputText(recordToEdit ? recordToEdit.name : "");
   }, [recordToEdit]);
 
   const handleAdd = () => {
+    if (!inputText) return;
     addNewHabit({ name: inputText, dates: [] });
     setInputText("");
   };
@@ -34,6 +37,21 @@ function InputForm() {
     setRecordToEdit(null);
     setInputText("");
   };
+
+  const handleKeyDown = (e) => {
+    if (e.key !== "Enter") return;
+    if (recordToEdit) {
+      handleUpdate;
+    } else {
+      handleAdd();
+    }
+  };
+
+  useEffect(() => {
+    if (habits.length === 0) {
+      inputRef.current.focus();
+    }
+  }, [habits]);
 
   return (
     <>
@@ -52,6 +70,8 @@ function InputForm() {
             setInputText(e.target.value);
           }}
           placeholder="Enter New Habit"
+          ref={inputRef}
+          onKeyDown={(e) => handleKeyDown(e)}
         ></input>
         {!recordToEdit && (
           <button
@@ -69,7 +89,7 @@ function InputForm() {
             <button
               type="submit"
               className="primary"
-              disabled={inputText === recordToEdit.name}
+              disabled={inputText === recordToEdit.name || inputText === ""}
               onClick={handleUpdate}
             >
               <FaSave />
