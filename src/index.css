@@ -1,0 +1,42 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html {
+  font-size: 62.5%;
+}
+
+:root {
+  --text-color: #111111;
+  --light-grey: #dddddd;
+  --background-grey: #f6f6f6;
+  --button-background: #f1f1f1;
+  --date-box: #777777;
+}
+
+body {
+  font-family: "Nunito", sans-serif;
+  font-size: 1.6rem;
+  color: var(--text-color);
+}
+
+.centered-container {
+  max-width: 110rem;
+  margin: 13rem auto;
+  text-align: center;
+}
+
+.bordered-container {
+  border-top: 1px solid var(--light-grey);
+}
+
+.habitsContainer {
+  max-height: 40rem;
+  overflow-y: auto;
+}
+
+.habitsContainer .row:nth-child(even) {
+  background-color: var(--background-grey);
+}
