@@ -6,8 +6,14 @@ import { FaSave } from "react-icons/fa";
 import styles from "./InputForm.module.css";
 
 function InputForm() {
-  const { addNewHabit, recordToEdit, setRecordToEdit, updateHabit } =
-    useContext(HabitsContext);
+  const {
+    addNewHabit,
+    recordToEdit,
+    setRecordToEdit,
+    updateHabit,
+    quote,
+    author,
+  } = useContext(HabitsContext);
 
   const [inputText, setInputText] = useState("");
 
@@ -31,6 +37,12 @@ function InputForm() {
 
   return (
     <>
+      {quote && (
+        <blockquote className={styles.quote}>
+          &ldquo;{quote}&rdquo; &mdash; <footer>{author}</footer>
+        </blockquote>
+      )}
+
       <div className={styles.inputContainer}>
         <input
           type="text"

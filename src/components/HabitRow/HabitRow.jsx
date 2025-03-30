@@ -1,7 +1,6 @@
 import styles from "./HabitRow.module.css";
 import { IoMdCheckmark } from "react-icons/io";
-import { MdDeleteOutline } from "react-icons/md";
-import { MdOutlineEdit } from "react-icons/md";
+import { MdOutlineEdit, MdDeleteOutline } from "react-icons/md";
 import { useContext } from "react";
 import { HabitsContext } from "../../contexts/HabitsContext";
 
@@ -53,7 +52,11 @@ function HabitRow({ habitData }) {
             className={`box ${styles.checkbox}`}
             onClick={() => toggleHabitStatus(date)}
           >
-            {habitData.dates.includes(date) ? <IoMdCheckmark /> : ""}
+            {habitData.dates.includes(date) ? (
+              <IoMdCheckmark size="1.6rem" />
+            ) : (
+              ""
+            )}
           </div>
         ))}
       </div>

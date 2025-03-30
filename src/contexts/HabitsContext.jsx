@@ -9,6 +9,8 @@ const HabitsProvider = ({ children }) => {
   const initialState = {
     habits: getLocalStorage("habits") || [],
     recordToEdit: null,
+    quote: "",
+    author: "",
   };
 
   const reducer = (state, action) => {
@@ -43,17 +45,19 @@ const HabitsProvider = ({ children }) => {
           ),
           recordToEdit: null,
         };
+      case "SETQUOTE":
+        return {
+          ...state,
+          quote: action.payload.content,
+          author: action.payload.author,
+        };
     }
   };
 
-  const [{ habits, recordToEdit }, dispatch] = useReducer(
+  const [{ habits, recordToEdit, quote, author }, dispatch] = useReducer(
     reducer,
     initialState
   );
-
-  useEffect(() => {
-    localStorage.setItem("habits", JSON.stringify(habits));
-  }, [habits]);
 
   const addNewHabit = (habit) => {
     dispatch({ type: "ADD", payload: habit });
@@ -71,6 +75,23 @@ const HabitsProvider = ({ children }) => {
     dispatch({ type: "UPDATE", payload: updatedHabit });
   };
 
+  const getQuote = async () => {
+    try {
+      const response = await fetch(
+        "https://api.realinspire.live/v1/quotes/random"
+      );
+      const data = await response.json();
+      dispatch({ type: "SETQUOTE", payload: data[0] });
+    } catch (err) {
+      console.log(err);
+    }
+  };
+
+  useEffect(() => {
+    getQuote();
+    localStorage.setItem("habits", JSON.stringify(habits));
+  }, [habits]);
+
   return (
     <HabitsContext.Provider
       value={{
@@ -81,6 +102,8 @@ const HabitsProvider = ({ children }) => {
         recordToEdit,
         updateHabit,
         datesArray,
+        quote,
+        author,
       }}
     >
       {children}

@@ -47,3 +47,7 @@
   display: flex;
   gap: 1rem;
 }
+
+.quote {
+  margin-bottom: 1.8rem;
+}
