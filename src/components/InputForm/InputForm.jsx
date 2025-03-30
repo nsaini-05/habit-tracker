@@ -1,43 +1,34 @@
 import { useContext, useEffect, useState } from "react";
-import styles from "./InputForm.module.css";
 import { IoMdAddCircleOutline } from "react-icons/io";
 import { HabitsContext } from "../../contexts/HabitsContext";
 import { VscDiscard } from "react-icons/vsc";
 import { FaSave } from "react-icons/fa";
-import { useLocalStorage } from "../../hooks/useLocalStorageHook";
+import styles from "./InputForm.module.css";
+
 function InputForm() {
-  // eslint-disable-next-line no-unused-vars
-  const { habits, setHabits, updateHabit, setUpdateHabit } =
+  const { addNewHabit, recordToEdit, setRecordToEdit, updateHabit } =
     useContext(HabitsContext);
+
   const [inputText, setInputText] = useState("");
-  const { setLocalStorage } = useLocalStorage();
 
   useEffect(() => {
-    setInputText(updateHabit ? updateHabit.name : "");
-  }, [updateHabit]);
+    setInputText(recordToEdit ? recordToEdit.name : "");
+  }, [recordToEdit]);
 
-  const onSubmit = () => {
-    setHabits((habits) => [
-      ...habits,
-      { name: inputText, id: habits.length + 1, dates: [] },
-    ]);
+  const handleAdd = () => {
+    addNewHabit({ name: inputText, dates: [] });
     setInputText("");
-    setLocalStorage("habits", habits);
   };
 
   const handleUpdate = () => {
-    setHabits((habits) => {
-      return habits.map((habit) =>
-        habit.id === updateHabit.id ? { ...habit, name: inputText } : habit
-      );
-    });
-    setUpdateHabit(null);
+    updateHabit({ ...recordToEdit, name: inputText });
   };
 
   const hanldeDiscard = () => {
-    setUpdateHabit(null);
+    setRecordToEdit(null);
     setInputText("");
   };
+
   return (
     <div className={styles.inputContainer}>
       <input
@@ -49,23 +40,23 @@ function InputForm() {
         }}
         placeholder="Enter New Habit"
       ></input>
-      {!updateHabit && (
+      {!recordToEdit && (
         <button
           type="submit"
           className="primary"
           disabled={inputText === ""}
-          onClick={onSubmit}
+          onClick={handleAdd}
         >
           <IoMdAddCircleOutline />
           Add
         </button>
       )}
-      {updateHabit && (
+      {recordToEdit && (
         <div className={styles.buttonsContainer}>
           <button
             type="submit"
             className="primary"
-            disabled={inputText === updateHabit.name}
+            disabled={inputText === recordToEdit.name}
             onClick={handleUpdate}
           >
             <FaSave />

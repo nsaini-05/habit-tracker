@@ -7,10 +7,10 @@ function App() {
     <HabitsProvider>
       <div className="centered-container">
         <InputForm />
-        <main className="main-container">
+        <div className="bordered-container">
           <Header />
           <Habits />
-        </main>
+        </div>
       </div>
     </HabitsProvider>
   );

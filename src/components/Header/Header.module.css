@@ -1,7 +1,7 @@
 :global(.row) {
   display: grid;
   grid-template-columns: 5rem 20.6rem 1fr 8rem;
-  border-bottom: 1px solid #dddddd;
+  border-bottom: 1px solid var(--light-grey);
 }
 
 :global(.title) {
@@ -12,7 +12,7 @@
   letter-spacing: 2px;
   font-size: 1.2rem;
   font-weight: 600;
-  border-right: 1px solid #f1e9e9;
+  border-right: 1px solid var(--light-grey);
   display: flex;
   align-items: center;
   overflow: hidden;
@@ -27,7 +27,7 @@
 }
 
 :global(.box) {
-  color: #777777;
+  color: var(--date-box);
   font-size: 1.1rem;
 }
 
@@ -43,7 +43,7 @@
 :global(.actions) {
   display: flex;
   align-items: center;
-  border-right: 1px solid #f1e9e9;
+  border-right: 1px solid var(--light-grey);
   text-transform: uppercase;
   letter-spacing: 2px;
   font-size: 1.2rem;

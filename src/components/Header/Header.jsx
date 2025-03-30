@@ -1,16 +1,18 @@
 // eslint-disable-next-line no-unused-vars
 import styles from "./Header.module.css";
+import { useContext } from "react";
+import { HabitsContext } from "../../contexts/HabitsContext";
 function Header() {
-  const boxesArray = Array.from({ length: 31 });
+  const { datesArray } = useContext(HabitsContext);
   return (
     <div>
       <div className="row">
         <div className="actions"></div>
         <div className="title">Habit</div>
         <div className="datesContainer">
-          {boxesArray.map((_, index) => (
-            <div key={index} className="box">
-              {index + 1}
+          {datesArray.map((date) => (
+            <div key={date} className="box">
+              {date}
             </div>
           ))}
         </div>

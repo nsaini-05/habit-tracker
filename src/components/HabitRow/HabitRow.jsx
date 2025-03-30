@@ -5,29 +5,26 @@ import { MdOutlineEdit } from "react-icons/md";
 import { useContext } from "react";
 import { HabitsContext } from "../../contexts/HabitsContext";
 
-const boxesArray = Array.from({ length: 31 });
-
 function HabitRow({ habitData }) {
-  const { setUpdateHabit, setHabits } = useContext(HabitsContext);
+  const { deleteHabit, setRecordToEdit, updateHabit, datesArray } =
+    useContext(HabitsContext);
 
-  const hanldeOnClick = (id, index) => {
-    const newDate = index + 1;
-    setHabits((habits) => {
-      return habits.map((item) =>
-        item.id === id
-          ? {
-              ...item,
-              dates: item.dates.includes(newDate)
-                ? item.dates.filter((date) => date != newDate)
-                : [...item.dates, newDate],
-            }
-          : item
-      );
-    });
+  const toggleHabitStatus = (dateToUpdate) => {
+    if (habitData.dates.includes(dateToUpdate)) {
+      updateHabit({
+        ...habitData,
+        dates: habitData.dates.filter((date) => date !== dateToUpdate),
+      });
+    } else {
+      updateHabit({
+        ...habitData,
+        dates: [...habitData.dates, dateToUpdate],
+      });
+    }
   };
 
   const hanldeDelete = (id) => {
-    setHabits((habits) => habits.filter((habit) => habit.id !== id));
+    deleteHabit(id);
   };
 
   return (
@@ -42,21 +39,21 @@ function HabitRow({ habitData }) {
         <button className={`primary ${styles.actionButton}`}>
           <MdOutlineEdit
             size="1.6rem"
-            onClick={() => setUpdateHabit(habitData)}
+            onClick={() => setRecordToEdit(habitData)}
             className="action-icon"
           />
         </button>
       </div>
       <div className={`title`}>{habitData.name} </div>
       <div className="datesContainer">
-        {boxesArray.map((_, index) => (
+        {datesArray.map((date) => (
           <div
             type="checkbox"
-            key={index}
+            key={date}
             className={`box ${styles.checkbox}`}
-            onClick={() => hanldeOnClick(habitData.id, index)}
+            onClick={() => toggleHabitStatus(date)}
           >
-            {habitData.dates.includes(index + 1) ? <IoMdCheckmark /> : ""}
+            {habitData.dates.includes(date) ? <IoMdCheckmark /> : ""}
           </div>
         ))}
       </div>
