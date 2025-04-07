@@ -8,7 +8,7 @@ function App() {
     <Provider store={store}>
       <div className="centered-container">
         <InputForm />
-        <div className="bordered-container">
+        <div>
           <Header />
           <Habits />
         </div>

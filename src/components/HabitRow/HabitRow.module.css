@@ -8,7 +8,7 @@
   justify-content: center;
 }
 
-.checkbox:hover {
+.datesContainer .checkbox:hover {
   border: 1px solid var(--text-color);
 }
 
