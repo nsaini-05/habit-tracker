@@ -7,10 +7,10 @@ import {
   setRecordToEdit,
   updateHabit,
 } from "../../features/Habits/HabitsSlice";
+import { useSelector } from "react-redux";
 function HabitRow({ habitData }) {
   const dispatch = useDispatch();
-  const datesArray = Array.from({ length: 31 }, (_, i) => i + 1);
-
+  const { datesArray } = useSelector((store) => store.displayControls);
   const toggleHabitStatus = (dateToUpdate) => {
     if (habitData.dates.includes(dateToUpdate)) {
       dispatch(
@@ -54,7 +54,10 @@ function HabitRow({ habitData }) {
         </button>
       </div>
       <div className={`title`}>{habitData.name} </div>
-      <div className="datesContainer">
+      <div
+        className="datesContainer"
+        style={{ gridTemplateColumns: `repeat(${datesArray.length}, 1fr)` }}
+      >
         {datesArray.map((date) => (
           <div
             type="checkbox"

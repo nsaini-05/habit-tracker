@@ -7,8 +7,10 @@ function App() {
   return (
     <Provider store={store}>
       <div className="centered-container">
-        <InputForm />
-        <div>
+        <div className="sidebar">SideBar</div>
+        <div class="main-habits-container">
+          <InputForm />
+
           <Header />
           <Habits />
         </div>

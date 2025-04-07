@@ -1,45 +1,27 @@
 // eslint-disable-next-line no-unused-vars
 import styles from "./Header.module.css";
-import { useCallback } from "react";
+import { useSelector } from "react-redux";
+import { useDispatch } from "react-redux";
+import { changeMonth } from "../../features/ui/DisplaySlice";
 function Header() {
-  const getMonthsArray = useCallback(() => {
-    const year = new Date().getFullYear();
-    const isLeapYear = (year) =>
-      (year % 4 === 0 && year % 100 !== 0) || year % 400 === 0;
-
-    const months = [
-      { monthName: "Jan", numberOfDays: 31 },
-      { monthName: "Feb", numberOfDays: isLeapYear(year) ? 29 : 28 },
-      { monthName: "Mar", numberOfDays: 31 },
-      { monthName: "Apr", numberOfDays: 30 },
-      { monthName: "May", numberOfDays: 31 },
-      { monthName: "Jun", numberOfDays: 30 },
-      { monthName: "Jul", numberOfDays: 31 },
-      { monthName: "Aug", numberOfDays: 31 },
-      { monthName: "Sep", numberOfDays: 30 },
-      { monthName: "Oct", numberOfDays: 31 },
-      { monthName: "Nov", numberOfDays: 30 },
-      { monthName: "Dec", numberOfDays: 31 },
-    ];
-
-    return months;
-  }, []);
-
-  const months = getMonthsArray();
-  const selectedMonth = months[1];
-  const datesArray = Array.from(
-    { length: selectedMonth.numberOfDays },
-    (_, i) => i + 1
+  const { allMonths, datesArray, selectedMonth } = useSelector(
+    (store) => store.displayControls
   );
-
+  const dispatch = useDispatch();
   return (
     <div>
       <div className="row">
         <div className="actions"></div>
         <div className="title">Month</div>
         <div className="monthsContainer">
-          {months.map((month) => (
-            <div key={month} className="monthsTitle">
+          {allMonths.map((month, index) => (
+            <div
+              className={`monthsTitle ${
+                selectedMonth === index ? styles.activeMonth : ""
+              }`}
+              key={month.monthName}
+              onClick={() => dispatch(changeMonth(index))}
+            >
               {month.monthName}
             </div>
           ))}

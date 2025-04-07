@@ -23,11 +23,20 @@ body {
 }
 
 .centered-container {
-  max-width: 110rem;
-  margin: 13rem auto;
-  text-align: center;
+  display: flex;
+  height: 100vh;
+}
+.sidebar {
+  background-color: #f9f9f9;
+  width: 30rem;
 }
 
+.main-habits-container {
+  /* max-width: 120rem; */
+  /* padding: 8rem 4rem; */
+  width: 100%;
+  padding: 8rem 4rem;
+}
 .bordered-container {
   border-top: 1px solid var(--light-grey);
 }
@@ -67,6 +76,7 @@ body {
   align-items: center;
   justify-items: center;
   grid-template-columns: repeat(31, 1fr);
+  transition: all 0.5s ease-in-out;
 }
 
 .box {
@@ -119,4 +129,13 @@ body {
   background-color: var(--light-grey);
   cursor: not-allowed;
   opacity: 0.6;
+}
+
+.monthsTitle:hover {
+  cursor: pointer;
+  background-color: var(--background-grey);
+}
+
+.datesContainer {
+  transition: all 1s ease-in;
 }
