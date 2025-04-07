@@ -1,13 +1,18 @@
-import { useContext } from "react";
-import { HabitsContext } from "../../contexts/HabitsContext";
+import { useSelector } from "react-redux";
+import { useEffect } from "react";
 import HabitRow from "../HabitRow/HabitRow";
 function Habits() {
-  const { habits } = useContext(HabitsContext);
+  const { habitsList } = useSelector((store) => store.habits);
+
+  useEffect(() => {
+    localStorage.setItem("habits", JSON.stringify(habitsList));
+  }, [habitsList]);
+
   return (
     <div>
-      {habits.length > 0 && (
+      {habitsList.length > 0 && (
         <div className="habitsContainer">
-          {habits.map((habit) => {
+          {habitsList.map((habit) => {
             return <HabitRow habitData={habit} key={habit.id} />;
           })}
         </div>

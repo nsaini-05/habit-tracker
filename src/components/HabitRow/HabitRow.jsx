@@ -1,24 +1,31 @@
 import styles from "./HabitRow.module.css";
 import { IoMdCheckmark } from "react-icons/io";
 import { MdOutlineEdit, MdDeleteOutline } from "react-icons/md";
-import { useContext } from "react";
-import { HabitsContext } from "../../contexts/HabitsContext";
-
+import { useDispatch } from "react-redux";
+import {
+  deleteHabit,
+  setRecordToEdit,
+  updateHabit,
+} from "../../features/Habits/HabitsSlice";
 function HabitRow({ habitData }) {
-  const { deleteHabit, setRecordToEdit, updateHabit, datesArray } =
-    useContext(HabitsContext);
+  const dispatch = useDispatch();
+  const datesArray = Array.from({ length: 31 }, (_, i) => i + 1);
 
   const toggleHabitStatus = (dateToUpdate) => {
     if (habitData.dates.includes(dateToUpdate)) {
-      updateHabit({
-        ...habitData,
-        dates: habitData.dates.filter((date) => date !== dateToUpdate),
-      });
+      dispatch(
+        updateHabit({
+          ...habitData,
+          dates: habitData.dates.filter((date) => date !== dateToUpdate),
+        })
+      );
     } else {
-      updateHabit({
-        ...habitData,
-        dates: [...habitData.dates, dateToUpdate],
-      });
+      dispatch(
+        updateHabit({
+          ...habitData,
+          dates: [...habitData.dates, dateToUpdate],
+        })
+      );
     }
   };
 
@@ -26,7 +33,7 @@ function HabitRow({ habitData }) {
     const confirm = window.confirm(
       "Are you sure you want to delete the record ?"
     );
-    if (confirm) deleteHabit(id);
+    if (confirm) dispatch(deleteHabit(id));
   };
 
   return (
@@ -41,7 +48,7 @@ function HabitRow({ habitData }) {
         <button className={`primary ${styles.actionButton}`}>
           <MdOutlineEdit
             size="1.6rem"
-            onClick={() => setRecordToEdit(habitData)}
+            onClick={() => dispatch(setRecordToEdit(habitData))}
             className="action-icon"
           />
         </button>
