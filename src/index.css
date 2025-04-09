@@ -26,83 +26,19 @@ body {
   display: flex;
   height: 100vh;
 }
+
 .sidebar {
   background-color: #f9f9f9;
   width: 30rem;
+  padding-left: 2rem;
 }
 
 .main-habits-container {
-  /* max-width: 120rem; */
-  /* padding: 8rem 4rem; */
   width: 100%;
   padding: 8rem 4rem;
 }
-.bordered-container {
-  border-top: 1px solid var(--light-grey);
-}
 
-.habitsContainer {
-  max-height: 40rem;
-  overflow-y: auto;
-}
-
-.habitsContainer .row:nth-child(even) {
-  background-color: var(--background-grey);
-}
-
-.row {
-  display: grid;
-  grid-template-columns: 5rem 20.6rem 1fr 8rem;
-  border-bottom: 1px solid var(--light-grey);
-}
-
-.title {
-  padding-left: 1.6rem;
-  padding-top: 1rem;
-  padding-bottom: 1.1rem;
-  text-transform: uppercase;
-  letter-spacing: 2px;
-  font-size: 1.2rem;
-  font-weight: 600;
-  border-right: 1px solid var(--light-grey);
-  display: flex;
-  align-items: center;
-  overflow: hidden;
-  text-overflow: ellipsis;
-  white-space: nowrap;
-}
-.datesContainer {
-  display: grid;
-  align-items: center;
-  justify-items: center;
-  grid-template-columns: repeat(31, 1fr);
-  transition: all 0.5s ease-in-out;
-}
-
-.box {
-  color: var(--date-box);
-  font-size: 1.1rem;
-}
-
-.total {
-  font-size: 1rem;
-  text-transform: uppercase;
-  letter-spacing: 2px;
-  display: flex;
-  align-items: center;
-  padding-left: 2.3rem;
-}
-
-.actions {
-  display: flex;
-  align-items: center;
-  border-right: 1px solid var(--light-grey);
-  text-transform: uppercase;
-  letter-spacing: 2px;
-  font-size: 1.2rem;
-  font-weight: 600;
-}
-
+/* Button Styles */
 .primary {
   font-size: 1.6rem;
   padding: 1rem;
@@ -131,11 +67,6 @@ body {
   opacity: 0.6;
 }
 
-.monthsTitle:hover {
-  cursor: pointer;
-  background-color: var(--background-grey);
-}
-
-.datesContainer {
-  transition: all 1s ease-in;
+.bordered-container {
+  border-top: 1px solid var(--light-grey);
 }

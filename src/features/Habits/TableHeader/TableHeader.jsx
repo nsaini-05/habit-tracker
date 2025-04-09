@@ -1,22 +1,22 @@
-// eslint-disable-next-line no-unused-vars
-import styles from "./Header.module.css";
+import styles from "./TableHeader.module.css";
 import { useSelector } from "react-redux";
 import { useDispatch } from "react-redux";
-import { changeMonth } from "../../features/ui/DisplaySlice";
-function Header() {
+import { changeMonth } from "../../ui/DisplaySlice";
+
+function TableHeader() {
   const { allMonths, datesArray, selectedMonth } = useSelector(
     (store) => store.displayControls
   );
   const dispatch = useDispatch();
   return (
-    <div>
-      <div className="row">
-        <div className="actions"></div>
-        <div className="title">Month</div>
-        <div className="monthsContainer">
+    <>
+      <div className={styles.row}>
+        <div className={styles.actions}></div>
+        <div className={styles.title}>Month</div>
+        <div className={styles.monthsContainer}>
           {allMonths.map((month, index) => (
             <div
-              className={`monthsTitle ${
+              className={`${styles.monthsTitle} ${
                 selectedMonth === index ? styles.activeMonth : ""
               }`}
               key={month.monthName}
@@ -26,25 +26,24 @@ function Header() {
             </div>
           ))}
         </div>
-        <div className="total"></div>
-      </div>
-      <div className="row ">
-        <div className="actions"></div>
-        <div className="title">Habit</div>
+        <div className={styles.total}></div>
+
+        <div className={styles.actions}></div>
+        <div className={styles.title}>Habit</div>
         <div
-          className="datesContainer"
+          className={styles.datesContainer}
           style={{ gridTemplateColumns: `repeat(${datesArray.length}, 1fr)` }}
         >
           {datesArray.map((date) => (
-            <div key={date} className="box">
+            <div key={date} className={styles.box}>
               {date}
             </div>
           ))}
         </div>
-        <div className="total">Total</div>
+        <div className={styles.total}>Total</div>
       </div>
-    </div>
+    </>
   );
 }
 
-export default Header;
+export default TableHeader;

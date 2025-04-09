@@ -2,11 +2,7 @@ import styles from "./HabitRow.module.css";
 import { IoMdCheckmark } from "react-icons/io";
 import { MdOutlineEdit, MdDeleteOutline } from "react-icons/md";
 import { useDispatch } from "react-redux";
-import {
-  deleteHabit,
-  setRecordToEdit,
-  updateHabit,
-} from "../../features/Habits/HabitsSlice";
+import { deleteHabit, setRecordToEdit, updateHabit } from "../HabitsSlice";
 import { useSelector } from "react-redux";
 function HabitRow({ habitData }) {
   const dispatch = useDispatch();
@@ -37,7 +33,7 @@ function HabitRow({ habitData }) {
   };
 
   return (
-    <div className="row">
+    <div className={styles.row}>
       <div className={styles.actionButtons}>
         <button
           className={`primary ${styles.actionButton}`}
@@ -53,14 +49,13 @@ function HabitRow({ habitData }) {
           />
         </button>
       </div>
-      <div className={`title`}>{habitData.name} </div>
+      <div className={styles.title}>{habitData.name} </div>
       <div
-        className="datesContainer"
+        className={styles.datesContainer}
         style={{ gridTemplateColumns: `repeat(${datesArray.length}, 1fr)` }}
       >
         {datesArray.map((date) => (
           <div
-            type="checkbox"
             key={date}
             className={`box ${styles.checkbox}`}
             onClick={() => toggleHabitStatus(date)}
@@ -74,7 +69,7 @@ function HabitRow({ habitData }) {
         ))}
       </div>
       {habitData.dates.length > 0 && (
-        <div className="total">{habitData.dates.length}</div>
+        <div className={styles.total}>{habitData.dates.length}</div>
       )}
     </div>
   );

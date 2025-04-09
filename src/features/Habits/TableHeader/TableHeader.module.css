@@ -1,10 +1,10 @@
-:global(.row) {
+.row {
   display: grid;
   grid-template-columns: 5rem 20.6rem 1fr 8rem;
   border-bottom: 1px solid var(--light-grey);
 }
 
-:global(.title) {
+.title {
   padding-left: 1.6rem;
   padding-top: 1rem;
   padding-bottom: 1.1rem;
@@ -19,19 +19,20 @@
   text-overflow: ellipsis;
   white-space: nowrap;
 }
-:global(.datesContainer) {
+
+.datesContainer {
   display: grid;
   align-items: center;
   justify-items: center;
   grid-template-columns: repeat(31, 1fr);
 }
 
-:global(.box) {
+.box {
   color: var(--date-box);
   font-size: 1.1rem;
 }
 
-:global(.total) {
+.total {
   font-size: 1rem;
   text-transform: uppercase;
   letter-spacing: 2px;
@@ -40,7 +41,7 @@
   padding-left: 2.3rem;
 }
 
-:global(.actions) {
+.actions {
   display: flex;
   align-items: center;
   border-right: 1px solid var(--light-grey);
@@ -50,14 +51,14 @@
   font-weight: 500;
 }
 
-:global(.monthsContainer) {
+.monthsContainer {
   display: grid;
   align-items: center;
   justify-items: center;
   grid-template-columns: repeat(12, 1fr);
 }
 
-:global(.monthsTitle) {
+.monthsTitle {
   font-size: 1.2rem;
   text-transform: uppercase;
   font-weight: 500;
@@ -67,4 +68,17 @@
 
 .activeMonth {
   background: var(--button-background);
+}
+
+.total {
+  font-size: 1rem;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  display: flex;
+  align-items: center;
+  padding-left: 2.3rem;
+}
+
+.monthsTitle:hover {
+  cursor: pointer;
 }
