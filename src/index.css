@@ -22,22 +22,6 @@ body {
   color: var(--text-color);
 }
 
-.centered-container {
-  display: flex;
-  height: 100vh;
-}
-
-.sidebar {
-  background-color: #f9f9f9;
-  width: 30rem;
-  padding-left: 2rem;
-}
-
-.main-habits-container {
-  width: 100%;
-  padding: 8rem 4rem;
-}
-
 /* Button Styles */
 .primary {
   font-size: 1.6rem;
@@ -58,7 +42,7 @@ body {
 }
 
 .primary:hover {
-  box-shadow: inset 0 0 0 0.1px var(--text-color);
+  box-shadow: inset 0 0 0 1.5px var(--text-color);
 }
 
 .primary:disabled {

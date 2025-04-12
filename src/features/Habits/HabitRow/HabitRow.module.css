@@ -32,7 +32,7 @@
   align-items: center;
   border-right: 1px solid var(--light-grey);
   gap: 5px;
-  padding: 0 0.6rem;
+  justify-content: center;
 }
 
 .actionButton {
@@ -73,4 +73,10 @@
   display: flex;
   align-items: center;
   padding-left: 2.3rem;
+}
+
+.disabledDiv {
+  background-color: #f9f9f9;
+  cursor: not-allowed;
+  pointer-events: none;
 }

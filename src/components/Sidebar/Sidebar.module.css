@@ -1,0 +1,42 @@
+.sidebarIcon {
+  border: none;
+  outline: none;
+  background-color: #f9f9f9;
+  display: flex;
+  align-items: center;
+}
+
+.sidebarIcon:hover {
+  cursor: pointer;
+}
+
+.sidebar {
+  background-color: #f9f9f9;
+  width: 30rem;
+  padding: 2rem;
+  transition: all 300ms ease;
+  overflow: hidden;
+}
+
+.sidebarHidden {
+  width: 0;
+  padding: 2rem 0rem;
+}
+
+.controlsContainer {
+  margin-bottom: 8rem;
+}
+
+.linkContainer {
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+}
+
+.linkButton {
+  width: 100%;
+}
+
+.linkButton:hover {
+  background-color: var();
+}

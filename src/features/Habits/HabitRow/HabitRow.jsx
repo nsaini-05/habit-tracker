@@ -39,11 +39,11 @@ function HabitRow({ habitData }) {
           className={`primary ${styles.actionButton}`}
           onClick={() => hanldeDelete(habitData.id)}
         >
-          <MdDeleteOutline size="1.6rem" />
+          <MdDeleteOutline size={20} />
         </button>
         <button className={`primary ${styles.actionButton}`}>
           <MdOutlineEdit
-            size="1.6rem"
+            size={20}
             onClick={() => dispatch(setRecordToEdit(habitData))}
             className="action-icon"
           />

@@ -32,10 +32,14 @@ const datesArray = Array.from(
   (_, i) => i + 1
 );
 
+const userZone = Intl.DateTimeFormat().resolvedOptions().timeZone;
+console.log(userZone);
+
 export const initialState = {
   allMonths: months,
   selectedMonth: selectedMonth,
   datesArray: datesArray,
+  showSideBar: true,
 };
 
 export const DisplaySlice = createSlice({
@@ -50,9 +54,12 @@ export const DisplaySlice = createSlice({
         (_, i) => i + 1
       );
     },
+    toggleSideBar: (state) => {
+      state.showSideBar = !state.showSideBar;
+    },
   },
 });
 
 export default DisplaySlice.reducer;
 
-export const { changeMonth } = DisplaySlice.actions;
+export const { changeMonth, toggleSideBar } = DisplaySlice.actions;
