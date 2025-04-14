@@ -5,6 +5,7 @@ import { IoStatsChartOutline } from "react-icons/io5";
 import { IoSettingsOutline } from "react-icons/io5";
 import { toggleSideBar } from "../../features/ui/DisplaySlice";
 import { useDispatch, useSelector } from "react-redux";
+import { NavLink } from "react-router";
 function Sidebar() {
   const dispatch = useDispatch();
   const { showSideBar } = useSelector((state) => state.displayControls);
@@ -25,22 +26,41 @@ function Sidebar() {
       </div>
 
       <div className={styles.linkContainer}>
-        <div
-          className={`${styles.linkButton} primary`}
-          style={{ background: "none" }}
+        <NavLink
+          to="/dashboard"
+          className={({ isActive }) =>
+            styles.routeButton + (isActive ? ` ${styles.linkButtonActive}` : "")
+          }
         >
-          <MdOutlineSpaceDashboard size={20} />
-          <div>Dashboard</div>
-        </div>
-        <div className={`primary ${styles.linkButton}`}>
-          <IoSettingsOutline size={20} />
+          <div className={`${styles.linkButton} `}>
+            <MdOutlineSpaceDashboard size={20} />
+            <div>Dashboard</div>
+          </div>
+        </NavLink>
 
-          <div>Settings</div>
-        </div>
-        <div className={`primary ${styles.linkButton}`}>
-          <IoStatsChartOutline size={20} />
-          <div>Statistics</div>
-        </div>
+        <NavLink
+          to="/stats"
+          className={({ isActive }) =>
+            styles.routeButton + (isActive ? ` ${styles.linkButtonActive}` : "")
+          }
+        >
+          <div className={` ${styles.linkButton}`}>
+            <IoStatsChartOutline size={20} />
+            <div>Statistics</div>
+          </div>
+        </NavLink>
+
+        <NavLink
+          to="/settings"
+          className={({ isActive }) =>
+            styles.routeButton + (isActive ? ` ${styles.linkButtonActive}` : "")
+          }
+        >
+          <div className={` ${styles.linkButton}`}>
+            <IoSettingsOutline size={20} />
+            <div>Settings</div>
+          </div>
+        </NavLink>
       </div>
     </aside>
   );
