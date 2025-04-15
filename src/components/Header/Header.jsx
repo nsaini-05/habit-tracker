@@ -18,7 +18,7 @@ function Header() {
       </button>
 
       <span className={styles.logo}>
-        <LuBicepsFlexed /> Habit Tracker{" "}
+        <LuBicepsFlexed /> Habit Tracker
       </span>
       <button className={styles.sidebarIcon}>
         <SlLogout size={20} />

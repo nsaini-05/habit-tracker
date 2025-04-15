@@ -9,7 +9,7 @@ function App() {
           <Route path="/dashboard" element={<HabitsTable />}></Route>
           <Route
             path="/stats"
-            element={<h1>This is my stats page </h1>}
+            element={<h2>This is my stats page </h2>}
           ></Route>
           <Route
             path="/settings"

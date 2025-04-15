@@ -1,4 +1,3 @@
-import HabitsTable from "../../features/Habits/HabitsTable/HabitsTable";
 import Sidebar from "../../components/Sidebar/Sidebar";
 import styles from "./AppLayout.module.css";
 import Header from "../../components/Header/Header";
