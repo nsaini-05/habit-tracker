@@ -32,9 +32,6 @@ const datesArray = Array.from(
   (_, i) => i + 1
 );
 
-const userZone = Intl.DateTimeFormat().resolvedOptions().timeZone;
-console.log(userZone);
-
 export const initialState = {
   allMonths: months,
   selectedMonth: selectedMonth,
